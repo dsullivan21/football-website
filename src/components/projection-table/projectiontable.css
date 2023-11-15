@@ -1,0 +1,32 @@
+.fb__projection-table{
+    color: black;
+    background-color: white;
+    padding: 10px;
+    font-family: Consolas,monaco,monospace;
+    display: block;
+   
+}
+table{
+    border-collapse: collapse;
+    justify-content: space-evenly;
+}
+
+.fb__projection-table-item td {
+    border-bottom: 1px solid #ddd;
+    color: gray;
+    padding: 1rem;
+}
+
+.fb__projection-table-item{
+    border-bottom: 1px solid lightgray;
+}
+.fb__projection-table-item td{
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+
+.table-header{
+    text-transform: uppercase;
+    margin-bottom: 15px;
+    margin-top: 15px;
+}
