@@ -17,13 +17,41 @@ const ProjectionTable = () => {
     }
 
     useEffect(() => {
-        var data1 = require('./data.json');
-        setData(data1);
-        console.log(data)
-        //gatherData()
-        gatherNBAData()
+      //fetch('public/data.json')
+      //  .then(response => response.json())
+      //  .then((json) => setData(json))
+      var data1 = require('./data.json');
+      setData(data1);
+      console.log(data);
+      gatherData();
+      gatherNBAData();
+    
       }, [data]);
 
+
+    function fixStyles(){
+
+      var items = document.getElementsByClassName('MuiDataGrid-cellContent');
+      
+      for (let i = 0; i < items.length; i++){
+        console.log(items[i].title);
+        if (items[i].title == "OVER"){
+          console.log(items[i].parentNode);
+          items[i].parentNode.style.backgroundColor = "green";
+          items[i].style.color = "white";
+          items[i].style.fontWeight = "bold";
+        }
+        else if (items[i].title == "UNDER"){
+          items[i].parentNode.style.backgroundColor = "red";
+          items[i].style.color = "white";
+          items[i].style.fontWeight = "bold";
+          console.log(items[i].parentNode);
+        }
+        
+      }
+
+      
+    }
     
     function gatherNBAData() {
 
@@ -39,22 +67,34 @@ const ProjectionTable = () => {
                     id: count,
                     "Player": name,
                     "Team": data[0][d]["Team"],
-                    "MIN": data[0][d]["MIN"].toFixed(2),
-                    "FGA": data[0][d]["FGA"].toFixed(2),
-                    "FGM": data[0][d]["FGM"].toFixed(2),
-                    "FG %": data[0][d]["FG_PCT"].toFixed(2),
-                    "3PTA": data[0][d]["FG3A"].toFixed(2),
-                    "3PTM": data[0][d]["FG3M"].toFixed(2),
-                    "3FG %": data[0][d]["FG3_PCT"].toFixed(2),
-                    "FTA": data[0][d]["FTA"].toFixed(2),
-                    "FTM": data[0][d]["FTM"].toFixed(2),
-                    "FT %": data[0][d]["FT_PCT"].toFixed(2),
-                    "AST": data[0][d]["AST"].toFixed(2),
-                    "REB": data[0][d]["REB"].toFixed(2),
-                    "STL": data[0][d]["STL"].toFixed(2),
-                    "BLK": data[0][d]["BLK"].toFixed(2),
-                    "PF": data[0][d]["PF"].toFixed(2),
-                    "PTS": data[0][d]["PTS"].toFixed(2)
+                    "MIN": data[0][d]["MIN"],
+                    "FGA": data[0][d]["FGA"],
+                    "FGM": data[0][d]["FGM"],
+                    "FG %": data[0][d]["FG_PCT"],
+                    "3PTA": data[0][d]["FG3A"],
+                    "3PTM": data[0][d]["FG3M"],
+                    "FD 3s": data[0][d]["fanduel_threes"],
+                    "Pick3s": data[0][d]["pick_3s"],
+                    "3FG %": data[0][d]["FG3_PCT"],
+                    "FTA": data[0][d]["FTA"],
+                    "FTM": data[0][d]["FTM"],
+                    "FT %": data[0][d]["FT_PCT"],
+                    "AST": data[0][d]["AST"],
+                    "FD AST": data[0][d]["fanduel_ast"],
+                    "astPick": data[0][d]["pick_ast"],
+                    "REB": data[0][d]["REB"],
+                    "FD RB": data[0][d]["fanduel_reb"],
+                    "rebPick": data[0][d]["pick_reb"],
+                    "STL": data[0][d]["STL"],
+                    "FD STL": data[0][d]["fanduel_stl"],
+                    "stlPick": data[0][d]["pick_stl"],
+                    "BLK": data[0][d]["BLK"],
+                    "FD BLK": data[0][d]["fanduel_blk"],
+                    "blkPick": data[0][d]["pick_blk"],
+                    "PF": data[0][d]["PF"],
+                    "PTS": data[0][d]["PTS"],
+                    "FD PTS": data[0][d]["fanduel_pts"],
+                    "ptsPick": data[0][d]["pick_pts"],
                 }
 
                 rows.push(entry);
@@ -118,6 +158,19 @@ const ProjectionTable = () => {
                 width: 80
               },
               {
+                label: 'FD 3s',
+                field: 'FD 3s',
+                sort: 'asc',
+                type: "number",
+                width: 80
+              },
+              {
+                label: 'Pick',
+                field: 'Pick3s',
+                sort: 'asc',
+                width: 80
+              },
+              {
                 label: '3FG %',
                 field: '3FG %',
                 sort: 'asc',
@@ -153,10 +206,36 @@ const ProjectionTable = () => {
                 width: 80
               },
               {
+                label: 'FD AST',
+                field: 'FD AST',
+                sort: 'asc',
+                type: "number",
+                width: 80
+              },
+              {
+                label: 'PICK',
+                field: 'astPick',
+                sort: 'asc',
+                width: 80
+              },
+              {
                 label: 'REB',
                 field: 'REB',
                 sort: 'asc',
                 type: "number",
+                width: 80
+              },
+              {
+                label: 'FD REB',
+                field: 'FD RB',
+                sort: 'asc',
+                type: "number",
+                width: 80
+              },
+              {
+                label: 'PICK',
+                field: 'rebPick',
+                sort: 'asc',
                 width: 80
               },
               {
@@ -167,10 +246,36 @@ const ProjectionTable = () => {
                 width: 80
               },
               {
+                label: 'FD STL',
+                field: 'FD STL',
+                sort: 'asc',
+                type: "number",
+                width: 80
+              },
+              {
+                label: 'PICK',
+                field: 'stlPick',
+                sort: 'asc',
+                width: 80
+              },
+              {
                 label: 'BLK',
                 field: 'BLK',
                 sort: 'asc',
                 type: "number",
+                width: 80
+              },
+              {
+                label: 'FD BLK',
+                field: 'FD BLK',
+                sort: 'asc',
+                type: "number",
+                width: 80
+              },
+              {
+                label: 'PICK',
+                field: 'blkPick',
+                sort: 'asc',
                 width: 80
               },
               {
@@ -185,6 +290,19 @@ const ProjectionTable = () => {
                 field: 'PTS',
                 sort: 'asc',
                 type: "number",
+                width: 80
+              },
+              {
+                label: 'FD PTS',
+                field: 'FD PTS',
+                sort: 'asc',
+                type: "number",
+                width: 80
+              },
+              {
+                label: 'PICK',
+                field: 'ptsPick',
+                sort: 'asc',
                 width: 80
               },
         ];

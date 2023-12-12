@@ -30,3 +30,10 @@ table{
     margin-bottom: 15px;
     margin-top: 15px;
 }
+.css-78d1bb .MuiDataGrid-columnHeaderTitleContainerContent{
+    overflow: visible !important;
+}
+
+.MuiDataGrid-row:nth-child(odd) {
+    background-color: #EBECF0;
+  }
