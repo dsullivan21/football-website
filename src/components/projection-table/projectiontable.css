@@ -37,3 +37,41 @@ table{
 .MuiDataGrid-row:nth-child(odd) {
     background-color: #EBECF0;
   }
+
+.MuiDataGrid-columnHeaders{
+    background: radial-gradient(circle at 20% 14%, rgba(0, 40, 83, 1) 50%, rgba(4, 12, 24, 1) 90%) !important;
+    font-weight: 600 !important;
+}
+
+.MuiSvgIcon-root{
+    color: lightgray !important;
+}
+
+.MuiDataGrid-columnHeaderTitle {
+    font-weight: 600;
+}
+
+.css-vcjdx3{
+    background: radial-gradient(circle at 20% 14%, rgba(0, 40, 83, 1) 50%, rgba(4, 12, 24, 1) 90%) !important;
+    font-weight: 600 !important;
+}
+.fb__projection-top{
+    display: flex;
+    justify-content: space-evenly;
+    min-width: 50%;
+}
+.box-headers{
+    display: flex;
+    min-width: 50%;
+    justify-content: space-around;
+}
+
+
+@media screen and (max-width: 500px) {
+    .MuiBox-root {
+        width: 100% !important;
+    }
+    .fb__projection-top{
+        display: block;
+    }
+}
